@@ -29,9 +29,8 @@ public class ScalePlayerSize : MonoBehaviour
         // place the box at the calculated height and put it in front of the camera
         // the box is put in front of the camera because if it would be at the position of the camera, the hit would be delayed with the hit the player sees
         // y is ignored when moving the box forward because it would cause the box to be at a heigher/lower position when the user looks up/down
-        transform.position = new Vector3(Camera.main.transform.forward.x + Camera.main.transform.position.x,
-            Camera.main.transform.position.y - y,
-            Camera.main.transform.forward.z + Camera.main.transform.position.z);
+        transform.position = new Vector3(Camera.main.transform.position.x + Camera.main.transform.forward.x * 0.5f,
+            Camera.main.transform.position.y - y,Camera.main.transform.position.z + Camera.main.transform.forward.z * 0.5f);
     }
 
     // Update is called once per frame

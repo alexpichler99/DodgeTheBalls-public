@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HoloToolkit.Unity.SpatialMapping;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,7 @@ public class CreateBallScript : MonoBehaviour
     public Color colorActual;
     public Color[] colors;
     public Text pointsText;
+    public AudioSource audio;
 
     public int points = 0;
 
@@ -43,6 +45,7 @@ public class CreateBallScript : MonoBehaviour
     /// </summary>
     private void CreateNewBall()
     {
+        audio.Play();
         TurnToPerson();
         int colorIndex = UnityEngine.Random.Range(0, colors.Length);
         colorActual = colors[colorIndex];
@@ -100,4 +103,5 @@ public class CreateBallScript : MonoBehaviour
     {
         spawnWait = UnityEngine.Random.Range(spawnLeastWait, spawnMostWait);    //calculates a random time that is between the spawnLeastWait and the spawnMostWait -1
     }
+
 }

@@ -19,6 +19,7 @@ public class Manager : MonoBehaviour
     public Text scoreText;
     public Text pointsText;
 
+    public AudioSource audio;
 
     // Use this for initialization
     void Start()
@@ -40,6 +41,7 @@ public class Manager : MonoBehaviour
         bloodScreen.SetActive(false);
 
         gameOver.SetActive(false);
+        pointsText.gameObject.SetActive(true);
 
         createBallScript.StartSpawner();
     }
@@ -67,6 +69,8 @@ public class Manager : MonoBehaviour
         Debug.Log("hit");
         if (collision.gameObject.tag == "Ball")
         {
+            if (health > 0)
+                audio.Play();
             health--;
 
             if (health > 0)
@@ -87,6 +91,7 @@ public class Manager : MonoBehaviour
 
                 gameOver.SetActive(true);
                 bloodScreen.SetActive(true);
+                pointsText.gameObject.SetActive(false);
                 createBallScript.StopSpawner();
                 scoreText.text = "Score: " + createBallScript.points;
 

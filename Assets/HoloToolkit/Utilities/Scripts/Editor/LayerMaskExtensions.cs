@@ -13,28 +13,28 @@ namespace HoloToolkit.Unity
     {
         public const int LayerCount = 32;
 
-        private static string[] layerMaskNames;
+        private static string[] layerMaskNames = null;
         public static string[] LayerMaskNames
         {
             get
             {
                 if (layerMaskNames == null)
                 {
-                    layerMaskNames = new string[LayerCount];
+                    LayerMaskExtensions.layerMaskNames = new string[LayerCount];
                     for (int layer = 0; layer < LayerCount; ++layer)
                     {
-                        layerMaskNames[layer] = LayerMask.LayerToName(layer);
+                        LayerMaskExtensions.layerMaskNames[layer] = LayerMask.LayerToName(layer);
                     }
                 }
 
-                return layerMaskNames;
+                return LayerMaskExtensions.layerMaskNames;
             }
         }
 
         public static string GetDisplayString(this LayerMask layerMask)
         {
             StringBuilder stringBuilder = null;
-            for (int layer = 0; layer < LayerCount; ++layer)
+            for (int layer = 0; layer < LayerMaskExtensions.LayerCount; ++layer)
             {
                 if ((layerMask & (1 << layer)) != 0)
                 {
@@ -47,7 +47,7 @@ namespace HoloToolkit.Unity
                         stringBuilder.Append(" | ");
                     }
 
-                    stringBuilder.Append(LayerMaskNames[layer]);
+                    stringBuilder.Append(LayerMaskExtensions.LayerMaskNames[layer]);
                 }
             }
 

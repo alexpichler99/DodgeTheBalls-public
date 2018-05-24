@@ -1,5 +1,7 @@
+//
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
+//
 
 using System;
 using System.Collections.Generic;
@@ -276,7 +278,7 @@ namespace HoloToolkit.Unity
                 // Use scenes from the editor build settings.
                 Scenes = EditorBuildSettings.scenes.Where(scene => scene.enabled).Select(scene => scene.path),
 
-                // Configure a post build action to throw appropriate error code.
+                // Configure a post build action to throw appropreate error code.
                 PostBuildAction = (innerBuildInfo, buildError) =>
                 {
                     if (!string.IsNullOrEmpty(buildError))
